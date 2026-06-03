@@ -1,0 +1,65 @@
+<div class="savetavern-panel">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>SaveTavern Sync</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content">
+            <div class="savetavern-note">
+                前端扩展：推荐通过 Git URL 安装；手动放置时使用 <code>data/&lt;user-handle&gt;/extensions/third-party/savetavern</code><br />
+                服务端插件目录：<code>plugins/savetavern/index.js</code>
+            </div>
+
+            <div class="savetavern-grid">
+                <label class="savetavern-field">
+                    <span>Git 远程仓库地址</span>
+                    <input id="st-git-remote" type="text" class="text_pole" placeholder="https://github.com/user/repo.git" />
+                </label>
+
+                <label class="savetavern-field">
+                    <span>分支</span>
+                    <input id="st-git-branch" type="text" class="text_pole" placeholder="main" />
+                </label>
+
+                <label class="savetavern-field">
+                    <span>Git Token</span>
+                    <input id="st-git-token" type="password" class="text_pole" placeholder="留空表示保持服务器已保存 token" />
+                </label>
+
+                <div class="savetavern-meta">
+                    <span>Token 状态</span>
+                    <strong id="st-token-status">加载中...</strong>
+                </div>
+            </div>
+
+            <label class="savetavern-checkbox">
+                <input id="st-backup-enabled" type="checkbox" checked />
+                <span>同步后保留本地备份，存放到 <code>extensions/savetavern/imported/archive</code></span>
+            </label>
+            <div class="savetavern-subnote">关闭后，已同步文件会从 Git 仓库中删除，只保留已导入到酒馆的数据。</div>
+
+            <div class="savetavern-actions">
+                <button id="st-save-config" class="menu_button">保存配置</button>
+                <button id="st-sync-now" class="menu_button">立即同步</button>
+                <button id="st-refresh-state" class="menu_button">刷新状态</button>
+            </div>
+
+            <div id="st-refresh-hint" class="savetavern-hint">同步完成后会自动刷新页面，以便立即看到导入结果。</div>
+
+            <div class="savetavern-status">
+                <label>状态</label>
+                <pre id="st-status-summary">加载中...</pre>
+            </div>
+
+            <div class="savetavern-status">
+                <label>本次导入结果</label>
+                <pre id="st-last-summary">暂无结果</pre>
+            </div>
+
+            <div class="savetavern-status">
+                <label>日志</label>
+                <pre id="st-log-output">加载中...</pre>
+            </div>
+        </div>
+    </div>
+</div>

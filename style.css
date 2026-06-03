@@ -1,0 +1,743 @@
+.savetavern-panel {
+    margin: 12px 0;
+}
+
+.savetavern-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.savetavern-note {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--SmartThemeChatTintColor, #fff) 92%, #000 8%);
+    line-height: 1.5;
+}
+
+.savetavern-field {
+    display: grid;
+    gap: 6px;
+}
+
+.savetavern-field span,
+.savetavern-meta span,
+.savetavern-status label {
+    font-weight: 600;
+}
+
+.savetavern-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+}
+
+.savetavern-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 14px;
+    line-height: 1.5;
+}
+
+.savetavern-checkbox input[type="checkbox"] {
+    margin-top: 3px;
+    flex: 0 0 auto;
+}
+
+.savetavern-subnote {
+    margin-top: 6px;
+    opacity: 0.82;
+    line-height: 1.5;
+}
+
+.savetavern-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    align-items: center;
+}
+
+.savetavern-actions .menu_button {
+    min-width: 112px;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    writing-mode: horizontal-tb;
+    text-align: center;
+}
+
+.savetavern-hint {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: var(--SmartThemeBodyColor);
+    opacity: 0.85;
+}
+
+.savetavern-status {
+    margin-top: 16px;
+    display: grid;
+    gap: 6px;
+}
+
+.savetavern-status pre {
+    margin: 0;
+    padding: 12px;
+    min-height: 84px;
+    max-height: 240px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid var(--SmartThemeBorderColor);
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--SmartThemeChatTintColor, #fff) 88%, #000 12%);
+}
+
+.savetavern-scene-open {
+    overflow: hidden;
+}
+
+.savetavern-scene-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--st-scene-overlay-bg);
+    backdrop-filter: blur(8px) saturate(0.9);
+}
+
+.savetavern-scene-overlay[hidden] {
+    display: none !important;
+}
+
+.savetavern-scene-overlay[data-theme="light"] {
+    --st-scene-text: #161616;
+    --st-scene-muted: #727272;
+    --st-scene-border: #dddddd;
+    --st-scene-border-strong: #c4c4c4;
+    --st-scene-surface: #f5f5f5;
+    --st-scene-surface-soft: #ededed;
+    --st-scene-surface-strong: #ffffff;
+    --st-scene-surface-faint: #f8f8f8;
+    --st-scene-primary-bg: #111111;
+    --st-scene-primary-text: #ffffff;
+    --st-scene-overlay-bg: rgba(10, 10, 10, 0.24);
+    --st-scene-shadow: rgba(12, 12, 12, 0.14);
+    --st-scene-rail: rgba(0, 0, 0, 0.035);
+}
+
+.savetavern-scene-overlay[data-theme="dark"] {
+    --st-scene-text: #f3f3f3;
+    --st-scene-muted: #9a9a9a;
+    --st-scene-border: #323232;
+    --st-scene-border-strong: #474747;
+    --st-scene-surface: #171717;
+    --st-scene-surface-soft: #1f1f1f;
+    --st-scene-surface-strong: #101010;
+    --st-scene-surface-faint: #151515;
+    --st-scene-primary-bg: #f5f5f5;
+    --st-scene-primary-text: #111111;
+    --st-scene-overlay-bg: rgba(0, 0, 0, 0.56);
+    --st-scene-shadow: rgba(0, 0, 0, 0.34);
+    --st-scene-rail: rgba(255, 255, 255, 0.03);
+}
+
+.savetavern-scene-panel {
+    position: relative;
+    width: min(980px, 100%);
+    height: min(84vh, 860px);
+    min-height: 640px;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid var(--st-scene-border-strong);
+    border-radius: 28px;
+    background: linear-gradient(180deg, var(--st-scene-surface-strong), var(--st-scene-surface));
+    color: var(--st-scene-text);
+    box-shadow: 0 26px 70px var(--st-scene-shadow);
+    overflow: hidden;
+}
+
+.savetavern-scene-header,
+.savetavern-scene-editor-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.savetavern-scene-header {
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--st-scene-border);
+}
+
+.savetavern-scene-heading {
+    min-width: 0;
+    display: grid;
+    gap: 6px;
+}
+
+.savetavern-scene-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--st-scene-muted);
+}
+
+.savetavern-scene-heading h2,
+.savetavern-scene-card-title,
+.savetavern-scene-editor-title {
+    margin: 0;
+}
+
+.savetavern-scene-heading h2 {
+    font-size: clamp(1.35rem, 2vw, 2rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.savetavern-scene-subtitle,
+.savetavern-scene-card-meta,
+.savetavern-scene-editor-meta,
+.savetavern-scene-note {
+    line-height: 1.5;
+    color: var(--st-scene-muted);
+    font-size: 0.9rem;
+}
+
+.savetavern-scene-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "tabs refresh"
+        "search count";
+    gap: 12px;
+    align-items: center;
+}
+
+.savetavern-scene-header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.savetavern-scene-tabs {
+    grid-area: tabs;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.savetavern-scene-tab-button {
+    min-width: 104px;
+}
+
+.savetavern-scene-tab-button.is-active {
+    background: var(--st-scene-primary-bg) !important;
+    color: var(--st-scene-primary-text) !important;
+    border-color: var(--st-scene-primary-bg) !important;
+}
+
+.savetavern-scene-search {
+    grid-area: search;
+    min-width: 0;
+}
+
+.savetavern-scene-count {
+    grid-area: count;
+    min-height: 48px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--st-scene-border);
+    border-radius: 16px;
+    background: var(--st-scene-surface-faint);
+    color: var(--st-scene-text);
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.savetavern-scene-input {
+    min-height: 48px;
+    padding: 0 16px !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--st-scene-border-strong) !important;
+    background: var(--st-scene-surface-strong) !important;
+    color: var(--st-scene-text) !important;
+    box-shadow: none !important;
+    appearance: none;
+}
+
+.savetavern-scene-input::placeholder {
+    color: color-mix(in srgb, var(--st-scene-muted) 86%, transparent);
+}
+
+.savetavern-scene-input::selection,
+.savetavern-scene-editor-textarea::selection {
+    background: var(--st-scene-primary-bg);
+    color: var(--st-scene-primary-text);
+}
+
+.savetavern-scene-input:focus {
+    outline: none;
+    border-color: var(--st-scene-primary-bg) !important;
+}
+
+.savetavern-scene-button {
+    appearance: none;
+    min-height: 46px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: horizontal-tb !important;
+    white-space: nowrap;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border-radius: 16px !important;
+    border: 1px solid var(--st-scene-border-strong) !important;
+    background: var(--st-scene-surface-strong) !important;
+    color: var(--st-scene-text) !important;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+.savetavern-scene-button:hover,
+.savetavern-scene-button:focus-visible {
+    border-color: var(--st-scene-primary-bg) !important;
+    outline: none;
+}
+
+.savetavern-scene-button-secondary {
+    background: var(--st-scene-surface-strong) !important;
+    color: var(--st-scene-text) !important;
+}
+
+.savetavern-scene-theme-button,
+.savetavern-scene-close {
+    width: 46px;
+    min-width: 46px;
+    padding: 0 !important;
+    border-radius: 999px !important;
+}
+
+.savetavern-scene-theme-button svg,
+.savetavern-scene-close svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    display: block;
+}
+
+.savetavern-scene-button-primary {
+    background: var(--st-scene-primary-bg) !important;
+    color: var(--st-scene-primary-text) !important;
+    border-color: var(--st-scene-primary-bg) !important;
+}
+
+.savetavern-scene-body {
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.savetavern-library-content {
+    height: 100%;
+    min-height: 0;
+}
+
+.savetavern-scene-list-frame {
+    height: 100%;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid var(--st-scene-border);
+    border-radius: 24px;
+    background: var(--st-scene-surface-faint);
+    overflow: hidden;
+}
+
+.savetavern-library-section-header {
+    display: grid;
+    gap: 6px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--st-scene-border);
+}
+
+.savetavern-library-section-title {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.savetavern-scene-note {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.savetavern-preset-entry-controls {
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--st-scene-border);
+    border-radius: 18px;
+    background: var(--st-scene-surface-strong);
+}
+
+.savetavern-preset-entry-controls[hidden],
+.savetavern-preset-entry-config-panel[hidden] {
+    display: none !important;
+}
+
+.savetavern-preset-entry-config-panel {
+    display: grid;
+    gap: 12px;
+    padding-top: 4px;
+    border-top: 1px dashed var(--st-scene-border);
+}
+
+.savetavern-preset-entry-summary,
+.savetavern-preset-entry-hint {
+    color: var(--st-scene-muted);
+    line-height: 1.5;
+    font-size: 0.88rem;
+}
+
+.savetavern-preset-entry-target-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.savetavern-preset-entry-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.savetavern-scene-list-viewport {
+    min-height: 0;
+    overflow: auto;
+    padding-right: 6px;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+}
+
+.savetavern-scene-list {
+    min-height: 0;
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    padding-bottom: 4px;
+}
+
+.savetavern-scene-card {
+    padding: 16px;
+    border: 1px solid var(--st-scene-border);
+    border-radius: 18px;
+    background: var(--st-scene-surface-strong);
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.savetavern-scene-card.is-selected {
+    border-color: var(--st-scene-primary-bg);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--st-scene-primary-bg) 55%, transparent);
+}
+
+.savetavern-scene-card-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.savetavern-scene-card-heading {
+    min-width: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.savetavern-scene-card-title {
+    font-size: 1.05rem;
+    line-height: 1.3;
+    font-weight: 800;
+    word-break: break-word;
+}
+
+.savetavern-scene-card-meta {
+    word-break: break-word;
+    font-size: 0.8rem;
+}
+
+.savetavern-scene-card-actions {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.savetavern-scene-card-preview {
+    max-width: 100%;
+    color: color-mix(in srgb, var(--st-scene-text) 84%, var(--st-scene-muted) 16%);
+    line-height: 1.6;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.savetavern-scene-empty {
+    padding: 36px 18px;
+    text-align: center;
+    border: 1px dashed var(--st-scene-border-strong);
+    border-radius: 20px;
+    background: var(--st-scene-surface-strong);
+    color: var(--st-scene-muted);
+}
+
+.savetavern-scene-editor {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+}
+
+.savetavern-scene-editor[hidden] {
+    display: none !important;
+}
+
+.savetavern-scene-editor-backdrop {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--st-scene-text) 24%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+.savetavern-scene-editor-card {
+    position: relative;
+    z-index: 1;
+    width: min(620px, 100%);
+    max-height: min(74vh, 680px);
+    overflow: auto;
+    display: grid;
+    gap: 14px;
+    padding: 20px;
+    border: 1px solid var(--st-scene-border-strong);
+    border-radius: 24px;
+    background: var(--st-scene-surface-strong);
+    box-shadow: 0 18px 48px var(--st-scene-shadow);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.savetavern-scene-editor-card::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.savetavern-scene-editor-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.savetavern-scene-editor-textarea {
+    min-height: 240px;
+    padding: 14px 16px !important;
+    resize: vertical;
+}
+
+.savetavern-scene-editor-actions {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.savetavern-scene-editor-utility-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.savetavern-scene-editor-utility-actions[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .savetavern-scene-overlay {
+        padding: 14px;
+    }
+
+    .savetavern-scene-panel {
+        width: min(760px, calc(100vw - 28px));
+        height: min(82vh, 760px);
+        min-height: 560px;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .savetavern-scene-toolbar {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+
+    .savetavern-preset-entry-target-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .savetavern-scene-editor {
+        padding: 10px;
+    }
+
+    .savetavern-scene-editor-card {
+        width: 100%;
+        max-height: 70vh;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 560px) {
+    .savetavern-scene-overlay {
+        align-items: stretch;
+        padding: 12px;
+    }
+
+    .savetavern-scene-panel {
+        width: calc(100vw - 24px);
+        height: calc(100vh - 24px);
+        min-height: 0;
+        padding: 12px;
+        gap: 10px;
+        border-radius: 22px;
+    }
+
+    .savetavern-scene-header {
+        align-items: flex-start;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    .savetavern-scene-header-actions {
+        justify-content: flex-end;
+        margin-left: auto;
+    }
+
+    .savetavern-scene-eyebrow,
+    .savetavern-scene-subtitle {
+        display: none;
+    }
+
+    .savetavern-scene-close {
+        min-width: 38px;
+    }
+
+    .savetavern-scene-body {
+        min-height: 0;
+    }
+
+    .savetavern-scene-card {
+        padding: 12px;
+    }
+
+    .savetavern-scene-heading h2 {
+        font-size: 1.18rem;
+    }
+
+    .savetavern-scene-list-frame {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .savetavern-scene-card-title {
+        font-size: 0.96rem;
+    }
+
+    .savetavern-scene-card-meta {
+        font-size: 0.76rem;
+    }
+
+    .savetavern-scene-card-top {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .savetavern-scene-card-actions {
+        gap: 6px;
+        justify-content: flex-start;
+    }
+
+    .savetavern-scene-card-preview {
+        font-size: 0.86rem;
+        line-height: 1.45;
+    }
+
+    .savetavern-preset-entry-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .savetavern-scene-toolbar {
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+    }
+
+    .savetavern-scene-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+    }
+
+    .savetavern-scene-search {
+        min-height: 38px;
+    }
+
+    .savetavern-scene-count,
+    .savetavern-scene-button {
+        min-height: 38px;
+        font-size: 0.84rem;
+    }
+
+    .savetavern-scene-theme-button,
+    .savetavern-scene-close {
+        width: 38px;
+        min-width: 38px;
+        min-height: 38px;
+    }
+
+    .savetavern-scene-list-frame,
+    .savetavern-preset-entry-controls {
+        padding: 12px;
+    }
+
+    .savetavern-scene-editor-textarea {
+        min-height: 200px;
+    }
+
+    .savetavern-scene-editor-utility-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

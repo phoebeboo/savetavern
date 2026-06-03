@@ -1,0 +1,13 @@
+{
+    "display_name": "SaveTavern Sync",
+    "loading_order": 100,
+    "requires": [],
+    "optional": [],
+    "dependencies": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "吃点羊",
+    "version": "1.0.0",
+    "homePage": "",
+    "auto_update": false
+}
