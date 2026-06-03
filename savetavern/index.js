@@ -343,7 +343,9 @@ function syncRepo(config) {
         runGit(['-C', REPO_DIR, 'checkout', '-b', config.branch, `origin/${config.branch}`]);
     }
 
-    runGit(['-C', REPO_DIR, 'pull', 'origin', config.branch]);
+    // 这个仓库只是插件内部同步缓存，不承载用户手工修改。
+    // 每次同步前都强制对齐远端，避免上次导入后留下的工作区删除状态影响本轮扫描。
+    runGit(['-C', REPO_DIR, 'reset', '--hard', `origin/${config.branch}`]);
 }
 
 function filesEqual(src, dest) {
