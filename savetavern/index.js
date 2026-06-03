@@ -299,6 +299,33 @@ function runGit(args, options = {}) {
     }
 }
 
+function ensureRepoGitIdentity() {
+    const spawnOptions = {
+        encoding: 'utf8',
+        timeout: GIT_TIMEOUT_MS,
+        windowsHide: true,
+        env: {
+            ...process.env,
+            GIT_TERMINAL_PROMPT: '0',
+            GCM_INTERACTIVE: 'Never',
+            GH_PROMPT_DISABLED: '1',
+        },
+    };
+
+    const emailCheck = spawnSync('git', ['-C', REPO_DIR, 'config', '--local', '--get', 'user.email'], spawnOptions);
+    const nameCheck = spawnSync('git', ['-C', REPO_DIR, 'config', '--local', '--get', 'user.name'], spawnOptions);
+    const hasEmail = emailCheck.status === 0 && Boolean(emailCheck.stdout?.trim());
+    const hasName = nameCheck.status === 0 && Boolean(nameCheck.stdout?.trim());
+
+    if (!hasName) {
+        runGit(['-C', REPO_DIR, 'config', '--local', 'user.name', 'SaveTavern Sync']);
+    }
+
+    if (!hasEmail) {
+        runGit(['-C', REPO_DIR, 'config', '--local', 'user.email', 'savetavern@local.invalid']);
+    }
+}
+
 function buildAuthenticatedRemote(remote, token) {
     if (!remote.startsWith('https://') || !token) {
         return remote;
@@ -985,6 +1012,7 @@ function consumeRepoFiles(consumedFiles) {
     removeConsumedFiles(consumedFiles);
     removeEmptyDirectories(REPO_DIR);
     runGit(['-C', REPO_DIR, 'add', '-A']);
+    ensureRepoGitIdentity();
 
     const statusCheck = spawnSync('git', ['-C', REPO_DIR, 'status', '--porcelain'], {
         encoding: 'utf8',
